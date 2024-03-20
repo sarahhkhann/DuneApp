@@ -9,12 +9,10 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface APIService {
-    @GET("v2/top-headlines")
+    @GET("/")
     fun getMovie(
-        @Query("title")
-        title:String = "",
+        @Query("t") t:String,
 
-        @Query("apiKey")
-        apiKey: String = "f957522a5caf454a98125f92856e3008"
+        @Query("apiKey") apiKey: String = "ebb1677b"
     ): Call<Movie>
 }
