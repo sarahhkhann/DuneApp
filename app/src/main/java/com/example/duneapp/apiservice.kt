@@ -16,5 +16,5 @@ interface APIService {
 
         @Query("apiKey")
         apiKey: String = "f957522a5caf454a98125f92856e3008"
-    ): Call<News>
+    ): Call<Movie>
 }
