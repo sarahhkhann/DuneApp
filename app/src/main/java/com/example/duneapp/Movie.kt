@@ -1,10 +1,11 @@
 package com.example.duneapp
 
-import android.widget.ImageView
-import java.io.Serializable
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
-data class News(
-    val title: String,
-    val year: Int,
-    val poster: ImageView
+@JsonClass(generateAdapter = true)
+data class Movie(
+    @Json(name = "Title") val title: String,
+    @Json(name = "Year") val year: String,
+    @Json(name = "Poster") val poster: String
 )
