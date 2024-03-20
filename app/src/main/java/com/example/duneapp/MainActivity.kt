@@ -12,19 +12,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val searchbutton = findViewById<Button>(R.id.searchbutton)
-        searchbutton.setOnClickListener {
-            replaceFragment()
-        }
-    }
-
-    private fun replaceFragment() {
-        val newFragment = ResultsFragment()
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, newFragment)
-        transaction.commit()
 
     }
+
+
 
 
 }
