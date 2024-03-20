@@ -12,7 +12,7 @@ object RetrofitClient {
 
     private val moshi: Moshi by lazy {
         Moshi.Builder()
-            .addLast(KotlinJsonAdapterFactory()) // Ensure compatibility with Kotlin
+            .addLast(KotlinJsonAdapterFactory())
             .build()
     }
 
