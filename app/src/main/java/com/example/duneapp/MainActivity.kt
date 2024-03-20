@@ -3,8 +3,11 @@ package com.example.duneapp
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import coil.load
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,6 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         val inputTitle = findViewById<EditText>(R.id.inputtitle)
         val submitBtn = findViewById<Button>(R.id.submitBtn)
+        val movieTitleView = findViewById<TextView>(R.id.movietitle)
+        val movieYearView = findViewById<TextView>(R.id.movieyear)
+        val moviePosterView = findViewById<ImageView>(R.id.movieposter)
 
         val retrofit = Retrofit.Builder()
             .baseUrl("http://www.omdbapi.com/")
@@ -33,7 +39,13 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
                     if (response.isSuccessful) {
                         val movie = response.body()
-                        Toast.makeText(this@MainActivity, "Title: ${movie?.title}, Year: ${movie?.year}", Toast.LENGTH_LONG).show()
+                        movie?.let {
+                            movieTitleView.text = it.title
+                            movieYearView.text = it.year
+                            moviePosterView.load(it.poster) {
+                                crossfade(true)
+                            }
+                        }
                     } else {
                         Toast.makeText(this@MainActivity, "Failed to fetch movie details", Toast.LENGTH_LONG).show()
                     }
